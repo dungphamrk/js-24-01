@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card Game</title>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+        }
+
+        tr, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td class="card" data-image="./img/1.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/2.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/3.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/1.jpg"><img src="./img/dauhoicham.png" alt></td>
+        </tr>
+        <tr>
+            <td class="card" data-image="./img/6.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/5.png"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/4.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/3.jpg"><img src="./img/dauhoicham.png" alt></td>
+        </tr>
+        <tr>
+            <td class="card" data-image="./img/2.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/5.png"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/4.jpg"><img src="./img/dauhoicham.png" alt></td>
+            <td class="card" data-image="./img/6.jpg"><img src="./img/dauhoicham.png" alt></td>
+        </tr>
+    </table>
+    <script>
+        let cards = document.querySelectorAll(".card");
+        let openCardsList = [];
+        cards.forEach(card => {
+            card.addEventListener("click", function () {
+                openCard(card);
+            });
+        });
+        function openCard(card) {
+            let image = card.getAttribute("data-image");
+            if (openCardsList.includes(card)) {
+                return;
+            }
+            card.innerHTML = `<img src="${image}" alt="">`;
+            openCardsList.push(card);
+            if (openCardsList.length === 2) {
+                check();
+            }
+        }
+        function check() {
+            let [card1, card2] = openCardsList;
+            let image1 = card1.getAttribute("data-image");
+            let image2 = card2.getAttribute("data-image");
+            if (image1 === image2) {
+                openCardsList = [];
+            } else {
+                setTimeout(() => {
+                    card1.innerHTML = '<img src="./img/dauhoicham.png" alt="">';
+                    card2.innerHTML = '<img src="./img/dauhoicham.png" alt="">';
+                    openCardsList = [];
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>

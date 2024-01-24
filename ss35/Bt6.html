@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bt6</title>
+    </head>
+    <body>
+        <h1>Student Manage</h1>
+        <label for="">Student Id</label>
+        <input id="id" type="text">
+        <br>
+        <label for="">Studne Name</label>
+        <input type="text" id="name">
+        <br>
+        <label for="">Age</label>
+        <input type="text" id="age">
+        <br>
+        <label for="">Phone</label>
+        <input type="number" id="phone">
+        <br>
+        <label for="">Email</label>
+        <input type="email" id="email">
+        <br>
+        <button>Create</button>
+        <ul></ul>
+        <script>
+            function validate_name(student_name) {
+                return student_name.length > 0;
+            }
+            function validate_id(id) {
+                return id.length===6;
+            }
+            function validate_mail(mail) {
+                let email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return email_regex.test(mail);
+            }
+            function validate_age(age) {
+                return age>= 18;
+            } 
+            function validate_phone(phone) {
+                console.log(phone.slice(0,2));
+                if (phone.slice(0,2)=="84") {
+                    return phone.length<=12&&phone.length>=11;
+                }
+                return false;
+               
+            }
+            let id=document.getElementById("id");
+            let btn= document.querySelector("button");
+            let name=document.getElementById("name");
+            let email=document.getElementById("email");
+            let phone=document.getElementById("phone");
+            let age=document.getElementById("age");
+            
+            btn.addEventListener("click",function(){
+                if (validate_age(age.value)&&validate_id(id.value)&&
+                validate_mail(email.value)&&validate_name(name.value)&&validate_phone(phone.value)) {
+                    let liId=document.createElement("li");
+                    liId.innerText=id.value;
+                    document.querySelector("ul").appendChild(liId);
+                    let liName=document.createElement("li");
+                    liName.innerText=name.value;
+                    document.querySelector("ul").appendChild(liName);
+                    let liPhone=document.createElement("li");
+                    liPhone.innerText=phone.value;
+                    document.querySelector("ul").appendChild(liPhone);
+                    let liAge=document.createElement("li");
+                    liAge.innerText=age.value;
+                    document.querySelector("ul").appendChild(liAge);
+                    let liEmail=document.createElement("li");
+                    liEmail.innerText=email.value;
+                    document.querySelector("ul").appendChild(liEmail);
+                }
+                else alert("du lieu dang ko hop le");
+            })
+    </script>
+    </body>
+</html>

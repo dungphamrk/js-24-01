@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bt3</title>
+</head>
+<body>
+    <input type="text">
+    <div>
+
+    </div>
+    <script>
+        let input=document.querySelector("input");
+        input.addEventListener("input",function (event) {
+            document.querySelector("div").innerHTML=event.target.value;
+            let mark=document.createElement("mark");
+            mark.innerHTML=event.target.value;
+            mark.style.display="block";
+            document.querySelector("div").appendChild(mark);
+          
+        })
+        
+    </script>
+</body>
+</html>

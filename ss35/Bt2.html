@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bt2</title>
+        <style>
+          button{
+            background-color: rgb(59, 221, 59);
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            width: 110px;
+            margin: 10vh;
+        }
+    </style>
+    </head>
+    <body>
+        <button>ON</button>
+        <script>
+            let btn= document.querySelector("button");
+            btn.addEventListener("click",function(){
+                if (btn.innerText==="ON") {
+                    btn.innerText="OFF";
+                }
+                else btn.innerText="ON";
+            })
+        </script>
+    </body>
+</html>

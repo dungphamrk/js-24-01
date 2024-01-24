@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bt4</title>
+</head>
+<body>
+    <input id="ip1" type="number" value="0"> +
+    <input id="ip2" type="number" value="0"> =
+    <input id="result1" type="number" placeholder="click here 1">
+    <input id="result2" type="number" placeholder=" 2">
+    <script>
+        let result2=document.getElementById("result2");
+        let result1= document.getElementById("result1");
+        result1.addEventListener("click",function (event) {
+            let input1=document.getElementById("ip1");
+            let input2=document.getElementById("ip2");
+            event.target.value=(parseInt(input2.value)+parseInt(input1.value))
+        })
+        let input1=document.getElementById("ip1");
+        let input2=document.getElementById("ip2");
+        input1.addEventListener("input",function (event) {
+            let input2=document.getElementById("ip2");
+            let result2=document.getElementById("result2");
+            result2.value=(parseInt(input2.value)+parseInt(input1.value))
+        })
+        input2.addEventListener("input",function (event) {
+            let input1=document.getElementById("ip1");
+            let result2=document.getElementById("result2");
+            result2.value=(parseInt(input2.value)+parseInt(input1.value));
+        })
+    </script>
+</body>
+</html>
